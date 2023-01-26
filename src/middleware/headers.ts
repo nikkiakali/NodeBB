@@ -1,13 +1,13 @@
-'use strict';
+// 'use strict';
 
-const os = require('os');
-const winston = require('winston');
-const _ = require('lodash');
+import os from 'os';
+import winston from 'winston';
+import _ from 'lodash';
 
-const meta = require('../meta');
-const languages = require('../languages');
-const helpers = require('./helpers');
-const plugins = require('../plugins');
+import meta from '../meta';
+import languages from '../languages';
+import helpers from './helpers';
+import plugins from '../plugins';
 
 module.exports = function (middleware) {
     middleware.addHeaders = helpers.try((req, res, next) => {
@@ -33,7 +33,7 @@ module.exports = function (middleware) {
 
             if (origins.includes(req.get('origin'))) {
                 headers['Access-Control-Allow-Origin'] = encodeURI(req.get('origin'));
-                headers.Vary = headers.Vary ? `${headers.Vary}, Origin` : 'Origin';
+             //   headers.Vary = headers.Vary ? `${headers.Vary}, Origin` : 'Origin';
             }
         }
 
@@ -52,7 +52,7 @@ module.exports = function (middleware) {
             originsRegex.forEach((regex) => {
                 if (regex && regex.test(req.get('origin'))) {
                     headers['Access-Control-Allow-Origin'] = encodeURI(req.get('origin'));
-                    headers.Vary = headers.Vary ? `${headers.Vary}, Origin` : 'Origin';
+                 //   headers.Vary = headers.Vary ? `${headers.Vary}, Origin` : 'Origin';
                 }
             });
         }
